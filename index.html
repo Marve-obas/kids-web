@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LessGooo Kids 🚀 | Learn Computer, Linux, AWS & AI - Break the Mystery!</title>
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a28;
+            --bg-card-hover: #222236;
+            --accent-cyan: #00d4ff;
+            --accent-purple: #a855f7;
+            --accent-pink: #ec4899;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --text-primary: #e2e8f0;
+            --text-secondary: #a0aec0;
+            --text-muted: #64748b;
+            --border: #2d2d45;
+            --gradient-1: linear-gradient(135deg, #0a0a1a 0%, #1a1040 50%, #0a0a1a 100%);
+            --gradient-2: linear-gradient(135deg, #00d4ff, #a855f7);
+            --gradient-3: linear-gradient(135deg, #10b981, #00d4ff);
+            --gradient-4: linear-gradient(135deg, #f59e0b, #ec4899);
+            --gradient-card: linear-gradient(180deg, rgba(26, 26, 40, 0.9) 0%, rgba(18, 18, 26, 0.95) 100%);
+            --shadow-glow-cyan: 0 0 30px rgba(0, 212, 255, 0.2);
+            --shadow-glow-purple: 0 0 30px rgba(168, 85, 247, 0.2);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Animated background particles */
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.4;
+        }
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: floatUp linear infinite;
+        }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Navbar - Netflix Style */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 14px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: var(--transition);
+            background: transparent;
+        }
+        .navbar.scrolled {
+            background: rgba(10, 10, 15, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-logo .rocket {
+            font-size: 2rem;
+            -webkit-text-fill-color: initial;
+            animation: bounce 1s ease-in-out infinite;
+        }
+        @keyframes bounce {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 6px 0;
+        }
+        .nav-links a:hover {
+            color: #fff;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-cyan);
+            transition: var(--transition);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .btn-pay {
+            background: var(--gradient-2);
+            color: #fff !important;
+            padding: 10px 22px !important;
+            border-radius: 50px;
+            font-weight: 700 !important;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.35);
+            text-decoration: none;
+            font-size: 0.9rem !important;
+        }
+        .btn-pay:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(168, 85, 247, 0.5);
+        }
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+            background: var(--gradient-1);
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(168, 85, 247, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 30%, rgba(0, 212, 255, 0.06) 0%, transparent 50%);
+            animation: heroPulse 8s ease-in-out infinite;
+        }
+        @keyframes heroPulse {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 850px;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.15);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            color: var(--accent-cyan);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+            animation: fadeInDown 0.6s ease-out;
+        }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .hero h1 {
+            font-size: clamp(2.4rem, 6vw, 4.5rem);
+            font-weight: 900;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, #c4d2ff 40%, #00d4ff 70%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInDown 0.6s ease-out 0.1s both;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 36px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInDown 0.6s ease-out 0.2s both;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeInDown 0.6s ease-out 0.3s both;
+        }
+        .btn-primary {
+            background: var(--gradient-2);
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 6px 25px rgba(0, 212, 255, 0.3);
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(168, 85, 247, 0.45);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: var(--transition);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-secondary:hover {
+            border-color: #fff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Section Common */
+        .section {
+            position: relative;
+            z-index: 1;
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-header h2 {
+            font-size: 2.4rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .quote-banner {
+            background: var(--bg-card);
+            border-left: 4px solid var(--accent-cyan);
+            padding: 16px 20px;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            margin: 16px 0;
+            font-style: italic;
+            color: var(--accent-cyan);
+            font-weight: 500;
+            font-size: 1rem;
+            text-align: center;
+            border-radius: var(--radius-sm);
+        }
+
+        /* Module Cards Grid */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+        .module-card {
+            background: var(--gradient-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px 28px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            group: true;
+        }
+        .module-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-cyan);
+            box-shadow: var(--shadow-glow-cyan);
+            background: var(--bg-card-hover);
+        }
+        .module-card .icon-wrap {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 18px;
+            transition: var(--transition);
+        }
+        .module-card:nth-child(1) .icon-wrap {
+            background: rgba(0, 212, 255, 0.2);
+        }
+        .module-card:nth-child(2) .icon-wrap {
+            background: rgba(16, 185, 129, 0.2);
+        }
+        .module-card:nth-child(3) .icon-wrap {
+            background: rgba(245, 158, 11, 0.2);
+        }
+        .module-card:nth-child(4) .icon-wrap {
+            background: rgba(168, 85, 247, 0.2);
+        }
+        .module-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .module-card .tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 50px;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+        .tag-beginner {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+        }
+        .tag-intermediate {
+            background: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+        }
+        .tag-advanced {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+        .module-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .module-card .card-footer {
+            margin-top: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-cyan);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        .module-card:hover .card-footer {
+            gap: 14px;
+        }
+
+        /* Topic Detail Sections */
+        .topic-detail {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 36px 30px;
+            margin: 30px 0;
+            transition: var(--transition);
+        }
+        .topic-detail h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        .topic-detail .analogy-box {
+            background: rgba(168, 85, 247, 0.08);
+            border: 1px dashed rgba(168, 85, 247, 0.4);
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            margin: 16px 0;
+            position: relative;
+        }
+        .analogy-box::before {
+            content: '💡 Analogy';
+            position: absolute;
+            top: -12px;
+            left: 16px;
+            background: var(--bg-secondary);
+            padding: 2px 10px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent-purple);
+            letter-spacing: 0.5px;
+        }
+        .analogy-box p {
+            color: #d4c8f0;
+            font-style: italic;
+        }
+        .resource-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 14px;
+        }
+        .resource-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-card);
+            color: var(--accent-cyan);
+            padding: 10px 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+        .resource-link:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        /* AI Deep Dive - SVG Graphs */
+        .ai-visual-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 30px 0;
+        }
+        @media (max-width: 768px) {
+            .ai-visual-section {
+                grid-template-columns: 1fr;
+            }
+        }
+        .ai-visual-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 24px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: var(--transition);
+        }
+        .ai-visual-card:hover {
+            border-color: var(--accent-purple);
+            box-shadow: var(--shadow-glow-purple);
+        }
+        .ai-visual-card svg {
+            max-width: 100%;
+            height: auto;
+        }
+        .ai-visual-card h4 {
+            margin-top: 12px;
+            font-weight: 700;
+            color: #fff;
+        }
+        .ai-visual-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 6px;
+        }
+
+        /* Policy Section */
+        .policy-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 40px 30px;
+            margin: 40px 0;
+        }
+        .policy-section h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            color: #fff;
+        }
+        .policy-section p,
+        .policy-section li {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+        .policy-section ul {
+            list-style: disc;
+            padding-left: 20px;
+        }
+
+        /* Footer */
+        .footer {
+            position: relative;
+            z-index: 1;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: 40px 20px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        .footer a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+        }
+        .footer .footer-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 16px 0;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .modal-content {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 30px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+        }
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .modal-close:hover {
+            color: var(--accent-red);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 12px 16px;
+            }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 15, 0.97);
+                flex-direction: column;
+                padding: 20px;
+                gap: 14px;
+                border-bottom: 1px solid var(--border);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .hero {
+                padding: 100px 16px 60px;
+                min-height: auto;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .section {
+                padding: 50px 16px;
+            }
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Particles -->
+    <div class="bg-particles" id="particles"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-logo" onclick="scrollToTop()">
+            <span class="rocket">🚀</span> LessGooo Kids
+        </div>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">☰</button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#computers">💻 Computers</a></li>
+            <li><a href="#linux">🐧 Linux</a></li>
+            <li><a href="#aws">☁️ AWS Cloud</a></li>
+            <li><a href="#ai">🤖 AI Secrets</a></li>
+            <li><a href="#policy">📜 Policy</a></li>
+            <li><a href="https://yyducwtv.mychariow.shop/prd_nz1wuy" target="_blank" rel="noopener" class="btn-pay">💳 Unlock Full Course</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge">🌟 For Curious Kids Ages 8-16</div>
+            <h1>Break the Mystery.<br>Build the Future.</h1>
+            <p>Demystifying Computers, Linux, AWS Cloud & AI — with simple analogies, cool graphs, and zero boring lectures. Ready to <strong>LessGooo</strong>? 🚀</p>
+            <div class="quote-banner">
+                "The secret of getting ahead is getting started." — carles Twain
+            </div>
+            <div class="hero-buttons">
+                <a href="#computers" class="btn-primary">🔍 Start Exploring Free</a>
+                <a href="https://yyducwtv.mychariow.shop/prd_nz1wuy" target="_blank" rel="noopener" class="btn-secondary">💳 Get Full Access</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Module 1: Computers -->
+    <section class="section" id="computers">
+        <div class="section-header">
+            <h2>💻 Computer Basics</h2>
+            <p>Understand what's inside that magic box — no screwdriver needed!</p>
+        </div>
+        <div class="quote-banner">
+            "The computer was born to solve problems that did not exist before." — Bill Gates
+        </div>
+        <div class="modules-grid">
+            <div class="module-card" onclick="openModal('comp1')">
+                <div class="icon-wrap">🧠</div>
+                <span class="tag tag-beginner">Beginner</span>
+                <h3>CPU — The Brain</h3>
+                <p>The Central Processing Unit is like the brain of the computer. It thinks and calculates super fast!</p>
+                <div class="card-footer">Explore →</div>
+            </div>
+            <div class="module-card" onclick="openModal('comp2')">
+                <div class="icon-wrap">💾</div>
+                <span class="tag tag-beginner">Beginner</span>
+                <h3>RAM vs Storage</h3>
+                <p>RAM is short-term memory (like your desk), Storage is long-term (like your closet).</p>
+                <div class="card-footer">Explore →</div>
+            </div>
+            <div class="module-card" onclick="openModal('comp3')">
+                <div class="icon-wrap">⚡</div>
+                <span class="tag tag-intermediate">Intermediate</span>
+                <h3>How It All Connects</h3>
+                <p>Motherboard, power supply, and all the parts working together — like a city's infrastructure!</p>
+                <div class="card-footer">Explore →</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Module 2: Linux -->
+    <section class="section" id="linux">
+        <div class="section-header">
+            <h2>🐧 Linux Basics</h2>
+            <p>Meet the friendly penguin that runs the internet!</p>
+        </div>
+        <div class="quote-banner">
+            "In a world without walls and fences, who needs Windows and Gates?" — Unknown Linux Fan
+        </div>
+        <div class="modules-grid">
+            <div class="module-card" onclick="openModal('linux1')">
+                <div class="icon-wrap">🖥️</div>
+                <span class="tag tag-beginner">Beginner</span>
+                <h3>What is Linux?</h3>
+                <p>Linux is like the engine of a car — you don't see it, but it powers everything from phones to supercomputers!</p>
+                <div class="card-footer">Explore →</div>
+            </div>
+            <div class="module-card" onclick="openModal('linux2')">
+                <div class="icon-wrap">⌨️</div>
+                <span class="tag tag-beginner">Beginner</span>
+                <h3>The Terminal Adventure</h3>
+                <p>Typing commands is like giving secret handshake instructions to your computer. Way cooler than clicking!</p>
+                <div class="card-footer">Explore →</div>
+            </div>
+            <div class="module-card" onclick="openModal('linux3')">
+                <div class="icon-wrap">📂</div>
+                <span class="tag tag-intermediate">Intermediate</span>
+                <h3>Files & Folders Magic</h3>
+                <p>Everything in Linux is a file — even your keyboard! Learn the tree structure like a digital forest.</p>
+                <div class="card-footer">Explore →</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Module 3: AWS Cloud -->
+    <section class="section" id="aws">
+        <div class="section-header">
+            <h2>☁️ AWS Cloud Basics</h2>
+            <p>The cloud isn't magic fluff — it's just someone else's computer (but way cooler)!</p>
+        </div>
+        <div class="quote-banner">
+            "The cloud is about how you do computing, not where you do computing." — Paul Maritz
+        </div>
+        <div class="modules-grid">
+            <div class="module-card" onclick="openModal('aws1')">
+                <div class="icon-wrap">🏢</div>
+                <span class="tag tag-beginner">Beginner</span>
+                <h3>What is "The Cloud"?</h3>
+                <p>Imagine renting a super-powerful computer that lives in a giant warehouse — accessible from anywhere!</p>
+                <div class="card-footer">Explore →</div>
+            </div>
+            <div class="module-card" onclick="openModal('aws2')">
+                <div class="icon-wrap">🪣</div>
+                <span class="tag tag-beginner">Beginner</span>
+                <h3>S3 — The Infinite Backpack</h3>
+                <p>Amazon S3 stores any amount of data. Like a magical backpack that never gets full!</p>
+                <div class="card-footer">Explore →</div>
+            </div>
+            <div class="module-card" onclick="openModal('aws3')">
+                <div class="icon-wrap">⚙️</div>
+                <span class="tag tag-intermediate">Intermediate</span>
+                <h3>EC2 — Virtual Computers</h3>
+                <p>Spin up a brand new computer in 60 seconds. Poof! It's like summoning a robot helper.</p>
+                <div class="card-footer">Explore →</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Module 4: AI Deep Dive -->
+    <section class="section" id="ai">
+        <div class="section-header">
+            <h2>🤖 AI & Agents — Break the Mystery!</h2>
+            <p>AI isn't magic. It's math + data + patterns. Let's expose the secret sauce!</p>
+        </div>
+        <div class="quote-banner">
+            "AI is not about building a brain. It's about building a really good pattern-matching machine." — Demystifying AI
+        </div>
+
+        <!-- AI Visuals with SVG -->
+        <div class="ai-visual-section">
+            <div class="ai-visual-card">
+                <h4>🧠 Neural Network — Simplified</h4>
+                <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Input layer -->
+                    <circle cx="40" cy="60" r="18" fill="#00d4ff" opacity="0.8"/>
+                    <circle cx="40" cy="120" r="18" fill="#00d4ff" opacity="0.8"/>
+                    <circle cx="40" cy="170" r="18" fill="#00d4ff" opacity="0.8"/>
+                    <!-- Hidden layer -->
+                    <circle cx="150" cy="30" r="18" fill="#a855f7" opacity="0.8"/>
+                    <circle cx="150" cy="90" r="18" fill="#a855f7" opacity="0.8"/>
+                    <circle cx="150" cy="150" r="18" fill="#a855f7" opacity="0.8"/>
+                    <!-- Output layer -->
+                    <circle cx="260" cy="90" r="18" fill="#ec4899" opacity="0.8"/>
+                    <circle cx="260" cy="140" r="18" fill="#ec4899" opacity="0.8"/>
+                    <!-- Connections -->
+                    <line x1="58" y1="60" x2="132" y2="30" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                    <line x1="58" y1="60" x2="132" y2="90" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                    <line x1="58" y1="60" x2="132" y2="150" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                    <line x1="58" y1="120" x2="132" y2="30" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                    <line x1="58" y1="120" x2="132" y2="90" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                    <line x1="58" y1="120" x2="132" y2="150" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                    <line x1="58" y1="170" x2="132" y2="30" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                    <line x1="58" y1="170" x2="132" y2="90" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                    <line x1="58" y1="170" x2="132" y2="150" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                    <line x1="168" y1="30" x2="242" y2="90" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                    <line x1="168" y1="30" x2="242" y2="140" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                    <line x1="168" y1="90" x2="242" y2="90" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                    <line x1="168" y1="90" x2="242" y2="140" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                    <line x1="168" y1="150" x2="242" y2="90" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                    <line x1="168" y1="150" x2="242" y2="140" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                    <!-- Labels -->
+                    <text x="40" y="200" text-anchor="middle" fill="#aaa" font-size="11">Input</text>
+                    <text x="150" y="195" text-anchor="middle" fill="#aaa" font-size="11">Hidden</text>
+                    <text x="260" y="195" text-anchor="middle" fill="#aaa" font-size="11">Output</text>
+                </svg>
+                <p><strong>Analogy:</strong> Like a chain of whispers — each layer passes a message, slightly changed, until the final answer emerges.</p>
+            </div>
+            <div class="ai-visual-card">
+                <h4>🤖 AI Agent — How It Works</h4>
+                <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Agent Brain -->
+                    <rect x="100" y="40" width="100" height="50" rx="25" fill="#a855f7" opacity="0.9"/>
+                    <text x="150" y="70" text-anchor="middle" fill="#fff" font-weight="700" font-size="13">AGENT BRAIN</text>
+                    <!-- Perception arrow -->
+                    <line x1="150" y1="90" x2="150" y2="130" stroke="#00d4ff" stroke-width="3" marker-end="url(#arrowCyan)"/>
+                    <defs><marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="#00d4ff"/></marker></defs>
+                    <!-- Action box -->
+                    <rect x="80" y="135" width="140" height="40" rx="12" fill="#10b981" opacity="0.8"/>
+                    <text x="150" y="160" text-anchor="middle" fill="#fff" font-weight="600" font-size="12">ACTION / OUTPUT</text>
+                    <!-- Environment feedback loop -->
+                    <path d="M230,155 C270,155 280,70 250,55" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5,4"/>
+                    <text x="265" y="105" fill="#f59e0b" font-size="10">Feedback Loop</text>
+                    <!-- World icon -->
+                    <circle cx="40" cy="100" r="22" fill="none" stroke="#ec4899" stroke-width="2"/>
+                    <text x="40" y="104" text-anchor="middle" fill="#ec4899" font-size="11">🌍 World</text>
+                </svg>
+                <p><strong>Secret:</strong> An AI Agent just loops: <em>Perceive → Think → Act → Learn</em>. Over and over. That's it!</p>
+            </div>
+            <div class="ai-visual-card">
+                <h4>🎯 Training vs Inference</h4>
+                <svg viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="15" y="25" width="110" height="50" rx="12" fill="#f59e0b" opacity="0.8"/>
+                    <text x="70" y="48" text-anchor="middle" fill="#000" font-weight="700" font-size="11">TRAINING</text>
+                    <text x="70" y="64" text-anchor="middle" fill="#000" font-size="9">(Learning from data)</text>
+                    <rect x="175" y="55" width="110" height="50" rx="12" fill="#10b981" opacity="0.8"/>
+                    <text x="230" y="78" text-anchor="middle" fill="#000" font-weight="700" font-size="11">INFERENCE</text>
+                    <text x="230" y="94" text-anchor="middle" fill="#000" font-size="9">(Using what it learned)</text>
+                    <line x1="125" y1="50" x2="175" y2="80" stroke="#fff" stroke-width="2" stroke-dasharray="4,3"/>
+                    <text x="150" y="140" text-anchor="middle" fill="#aaa" font-size="10">Analogy: Training = Studying 📚 | Inference = Taking a Test ✍️</text>
+                </svg>
+                <p><strong>Key Insight:</strong> Training takes weeks & costs millions. Inference takes milliseconds & costs pennies.</p>
+            </div>
+            <div class="ai-visual-card">
+                <h4>🔍 The "Secret" Behind AI</h4>
+                <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="20" y="30" width="80" height="35" rx="8" fill="#00d4ff" opacity="0.7"/>
+                    <text x="60" y="52" text-anchor="middle" fill="#000" font-weight="600" font-size="10">Data In</text>
+                    <rect x="125" y="25" width="50" height="45" rx="8" fill="#a855f7" opacity="0.8"/>
+                    <text x="150" y="51" text-anchor="middle" fill="#fff" font-weight="700" font-size="9">MATH</text>
+                    <text x="150" y="63" text-anchor="middle" fill="#fff" font-size="7">(Matrix Multiply)</text>
+                    <rect x="200" y="30" width="80" height="35" rx="8" fill="#ec4899" opacity="0.7"/>
+                    <text x="240" y="52" text-anchor="middle" fill="#000" font-weight="600" font-size="10">Prediction Out</text>
+                    <text x="150" y="100" text-anchor="middle" fill="#f59e0b" font-weight="700" font-size="11">🔑 SECRET: It's ALL just big matrix multiplication!</text>
+                    <text x="150" y="120" text-anchor="middle" fill="#aaa" font-size="9">No consciousness. No magic. Just math on steroids.</text>
+                    <text x="150" y="140" text-anchor="middle" fill="#10b981" font-size="9">→ Billions of numbers multiplied together = "Intelligence"</text>
+                </svg>
+                <p><strong>Exposed:</strong> AI seems smart, but it's really just predicting the next most likely word or pixel — based on patterns it memorized from training data.</p>
+            </div>
+        </div>
+
+        <!-- AI Topics -->
+        <div class="modules-grid" style="margin-top:20px;">
+            <div class="module-card" onclick="openModal('ai1')">
+                <div class="icon-wrap">📊</div>
+                <span class="tag tag-beginner">Beginner</span>
+                <h3>What is AI Really?</h3>
+                <p>Spoiler: It's not a robot brain. It's a pattern-copying machine trained on tons of examples.</p>
+                <div class="card-footer">Uncover →</div>
+            </div>
+            <div class="module-card" onclick="openModal('ai2')">
+                <div class="icon-wrap">🕵️</div>
+                <span class="tag tag-intermediate">Intermediate</span>
+                <h3>LLMs — The Secret Sauce</h3>
+                <p>Large Language Models like ChatGPT are just super-advanced autocomplete. For real!</p>
+                <div class="card-footer">Uncover →</div>
+            </div>
+            <div class="module-card" onclick="openModal('ai3')">
+                <div class="icon-wrap">🤖</div>
+                <span class="tag tag-advanced">Advanced</span>
+                <h3>AI Agents — Autonomous Helpers</h3>
+                <p>Agents are AI with a to-do list. They perceive, plan, and act — like a robot butler!</p>
+                <div class="card-footer">Uncover →</div>
+            </div>
+        </div>
+
+        <!-- Full Course Redirect -->
+        <div style="text-align:center; margin-top:36px;">
+            <a href="https://yyducwtv.mychariow.shop/prd_nz1wuy" target="_blank" rel="noopener" class="btn-primary" style="font-size:1.1rem; padding:16px 36px;">
+                🔓 Unlock Full AI Deep-Dive Course
+            </a>
+            <p style="color:var(--text-muted); margin-top:10px; font-size:0.85rem;">Includes interactive labs, agent building, and real AWS projects!</p>
+        </div>
+    </section>
+
+    <!-- Policy Section -->
+    <section class="section" id="policy">
+        <div class="section-header">
+            <h2>📜 Site Policy & Guidelines</h2>
+            <p>We're serious about learning — but also about safety and respect.</p>
+        </div>
+        <div class="policy-section">
+            <h3>🔒 Privacy Policy</h3>
+            <p>We do not collect personal data from children. Any email provided for course access is used solely for account management and never shared. We comply with COPPA guidelines.</p>
+
+            <h3>📚 Content Usage</h3>
+            <p>All educational content on LessGooo Kids is for learning purposes. You may fork, share, and remix our materials — but please give credit! We encourage open-source contributions.</p>
+
+            <h3>💳 Payment & Refunds</h3>
+            <p>Payments are processed securely via our partner. Full refunds within 7 days if you're not satisfied. Contact support for any billing questions. <a href="https://yyducwtv.mychariow.shop/prd_nz1wuy" target="_blank" rel="noopener">Payment Portal →</a></p>
+
+            <h3>🌟 Community Rules</h3>
+            <ul>
+                <li>Be kind and supportive — everyone starts somewhere!</li>
+                <li>No sharing personal information in comments or forums.</li>
+                <li>Encourage curiosity — there are no "dumb" questions.</li>
+                <li>Work hard, commit your code, and celebrate progress!</li>
+            </ul>
+
+            <h3>🍴 Fork & Contribute</h3>
+            <p>We believe in open knowledge. Fork our resources, build your own courses, and help kids worldwide learn tech. <strong>Hard work beats talent when talent doesn't work hard.</strong> Commit every day!</p>
+        </div>
+        <div class="quote-banner">
+            "The only way to do great work is to love what you do. If you haven't found it yet, keep looking." — Steve Jobs
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p style="font-size:1.3rem; font-weight:700;">🚀 LessGooo Kids</p>
+        <p>Demystifying Tech for the Next Generation | Est. 2026</p>
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#computers">Computers</a>
+            <a href="#linux">Linux</a>
+            <a href="#aws">AWS</a>
+            <a href="#ai">AI</a>
+            <a href="#policy">Policy</a>
+            <a href="https://yyducwtv.mychariow.shop/prd_nz1wuy" target="_blank" rel="noopener">Payment</a>
+        </div>
+        <p style="margin-top:12px;">Made with ❤️ for curious minds everywhere. <strong>Now go commit some code and work hard!</strong> 💪</p>
+        <p style="font-size:0.8rem; color:var(--text-muted);">© 2026 LessGooo Kids. All rights reserved. | <a href="#policy">Privacy & Terms</a></p>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay" style="display:none;" onclick="closeModal(event)">
+        <div class="modal-content" id="modalContent" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModalDirect()">✕</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script>
+        // Particle Background
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const colors = ['#00d4ff', '#a855f7', '#ec4899', '#10b981', '#f59e0b'];
+            for (let i = 0; i < 40; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                const size = Math.random() * 4 + 2;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = Math.random() * 12 + 6 + 's';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 60) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        function toggleMobileMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.getElementById('navLinks').classList.remove('active');
+        }
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // Modal System
+        const modalData = {
+            comp1: {
+                title: '🧠 CPU — The Brain of the Computer',
+                content: `
+                    <div class="topic-detail">
+                        <h3>The Central Processing Unit</h3>
+                        <div class="analogy-box">
+                            <p><strong>Analogy:</strong> Imagine the CPU as the <em>chef</em> in a restaurant kitchen. It takes orders (instructions), grabs ingredients (data from RAM), and cooks up results super fast — billions of times per second!</p>
+                        </div>
+                        <p>The CPU has tiny switches called <strong>transistors</strong> — billions of them! They flip on/off to do math and make decisions. Modern CPUs have multiple "cores" — like having multiple chefs working at once.</p>
+                        <div class="quote-banner">"The CPU is the part of the computer that actually does the computing. Everything else is just there to feed it data." — Unknown Engineer</div>
+                        <div class="resource-links">
+                            <a href="https://www.youtube.com/watch?v=cNN_tTXABUA" target="_blank" rel="noopener" class="resource-link">🎥 How CPUs Work (Video)</a>
+                            <a href="https://en.wikipedia.org/wiki/Central_processing_unit" target="_blank" rel="noopener" class="resource-link">📖 Wikipedia: CPU</a>
+                            <a href="https://yyducwtv.mychariow.shop/prd_nz1wuy" target="_blank" rel="noopener" class="resource-link">🔓 Full Course</a>
+                        </div>
+                    </div>
+                `
+            },
+            comp2: {
+                title: '💾 RAM vs Storage — Desk vs Closet',
+                content: `
+                    <div class="topic-detail">
+                        <h3>Short-Term vs Long-Term Memory</h3>
+                        <div class="analogy-box">
+                            <p><strong>Analogy:</strong> <strong>RAM</strong> is your <em>desk</em> — small, fast, and where you keep things you're working on right now. <strong>Storage (SSD/HDD)</strong> is your <em>closet</em> — big, slower, and where you keep things for later. When you turn off the computer, the desk (RAM) gets cleared, but the closet (Storage) keeps everything safe.</p>
+                        </div>
+                        <p>RAM = Random Access Memory. It's volatile (loses data when powered off). Storage = non-volatile (keeps data forever). More RAM = more apps open at once without slowing down!</p>
+                        <div class="quote-banner">"Memory is the diary that we all carry about with us." — Oscar Wilde (applied to computers!)</div>
+                        <div class="resource-links">
+                            <a href="https://www.youtube.com/watch?v=PVad0c2cljo" target="_blank" rel="noopener" class="resource-link">🎥 RAM Explained</a>
+                            <a href="https://yyducwtv.mychariow.shop/prd_nz1wuy" target="_blank" rel="noopener" class="resource-link">🔓 Full Course</a>
+                        </div>
+                    </div>
+                `
+            },
+            comp3: {
+                title: '⚡ How It All Connects — The City Inside',
+                content: `
+                    <div class="topic-detail">
+                        <h3>Motherboard, PSU, and Friends</h3>
+                        <div class="analogy-box">
+                            <p><strong>Analogy:</strong> The <strong>Motherboard</strong> is like a city's road system — it connects everything. The <strong>Power Supply (PSU)</strong> is the power plant. The <strong>CPU</strong> is city hall. <strong>RAM</strong> is the post office sorting mail. <strong>Storage</strong> is the library. Data zooms around on tiny copper highways called "buses."</p>
+                        </div>
+                        <p>Every component plugs into the motherboard. The BIOS/UEFI is the tiny program that wakes everyone up when you press the power button — like a city's morning alarm!</p>
+                        <div class="quote-banner">"The whole is greater than the sum of its parts." — Aristotle</div>
+                        <div class="resource-links">
+                            <a href="https://www.youtube.com/watch?v=nM3d3H3Kz8Q" target="_blank" rel="noopener" class="resource-link">🎥 Computer Tour</a>
+                            <a href="https://yyducwtv.mychariow.shop/prd_nz1wuy" target="_blank" rel="noopener" class="resource-link">🔓 Full Course</a>
+                        </div>
+                    </div>
+                `
+            },
+            linux1: {
+                title: '🐧 What is Linux? The Friendly Penguin',
+                content: `
+                    <div class="topic-detail">
+                        <h3>The OS That Runs the World</h3>
+                        <div class="analogy-box">
+                            <p><strong>Analogy:</strong> Linux is like the <em>engine</em> of a car. You don't always see it, but it's what makes everything go. Android phones, smart TVs, NASA rovers, and most websites all run on Linux. It's free, open-source, and maintained by thousands of volunteers worldwide!</p>
+                        </div>
+                        <p>Created by Linus Torvalds in 1991. The mascot is Tux the penguin. "Open source" means anyone can look at the code, modify it, and share their version. That's why it's so powerful — thousands of eyes make it secure and fast.</p>
+                        <div class="quote-banner">"Software is like sex: it's better when it's free." — Linus Torvalds</div>
+                        <div class="resource-links">
+                            <a href="https://www.kernel.org/" target="_blank" rel="noopener" class="resource-link">🐧 Linux Kernel</a>
+                            <a href="https://ubuntu.com/download" target="_blank" rel="noopener" class="resource-link">💿 Try Ubuntu</a>
+                            <a href="https://yyducwtv.mychariow.shop/prd_nz1wuy" target="_blank" rel="noopener" class="resource-link">🔓 Full Linux Course</a>
+                        </div>
+                    </div>
+                `
+            },
+            linux2: {
+                title: '⌨️ The Terminal — Secret Handshake Mode',
+                content: `
+                    <div class="topic-detail">
+                        <h3>Command Line Power</h3>
+                        <div class="analogy-box">
+                            <p><strong>Analogy:</strong> Using the terminal is like learning <em>secret ninja hand signals</em>. Instead of pointing and clicking, you type commands like <code>ls</code> (list files), <code>cd</code> (change directory), and <code>mkdir</code> (make folder). At first it seems harder, but soon you'll be 10x faster than mouse users!</p>
+                        </div>
+                        <p>Basic commands: <code>pwd</code> = where am I? <code>ls -la</code> = show me everything. <code>sudo</code> = superuser do (like asking for admin permission). The terminal is your direct line to the computer's soul.</p>
+                        <div class="quote-banner">"The command line is the only place where you can truly communicate with your computer." — Unknown Developer</div>
+                        <div class="resource-links">
+                            <a href="https://linuxcommand.org/" target="_blank" rel="noopener" class="resource-link">📖 Linux Command</a>
+                            <a href="https://yyducwtv.mychariow.shop/prd_nz1wuy" target="_blank" rel="noopener" class="resource-link">🔓 Full Course</a>
+                        </div>
+                    </div>
+                `
+            },
+            linux3: {
+                title: '📂 Everything is a File — The Digital Forest',
+                content: `
+                    <div class="topic-detail">
+                        <h3>The Linux Filesystem</h3>
+                        <div class="analogy-box">
+                            <p><strong>Analogy:</strong> Linux organizes everything as a giant <em>tree</em>. The root <code>/</code> is the trunk. Branches are folders like <code>/home</code> (your stuff), <code>/etc</code> (settings), <code>/dev</code> (devices). Even your keyboard and mouse are represented as files! Plug in a USB? It shows up as a file. Everything is a file — no exceptions.</p>
+                        </div>
+                        <p>The hierarchical structure starts at <code>/</code> (root). Your personal files live in <code>/home/yourname/</code>. System configs in <code>/etc/</code>. This uniformity makes Linux incredibly flexible.</p>
+                        <div class="quote-banner">"In UNIX, everything is a file. If something is not a file, it is a process." — Common UNIX Wisdom</div>
+                        <div class="resource-links">
+                            <a href="https://tldp.org/LDP/intro-linux/html/sect_03_01.html" target="_blank" rel="noopener" class="resource-link">📖 Filesystem Guide</a>
+                            <a href="https://yyducwtv.mychariow.shop/prd_nz1wuy" target="_blank" rel="noopener" class="resource-link">🔓 Full Course</a>
+                        </div>
+                    </div>
+                `
+            },
+            aws1: {
+                title: '☁️ What is The Cloud? Someone Else\'s Computer',
+                content: `
+                    <div class="topic-detail">
+                        <h3>Renting Superpowers</h3>
+                        <div class="analogy-box">
+                            <p><strong>Analogy:</strong> The "Cloud" is just <em>someone else's computer</em> that you rent by the hour. Need 1000 computers for 10 minutes? Done. Need a database that never loses data? Easy. It's like ordering pizza instead of building a kitchen — you get results fast without owning the infrastructure.</p>
+                        </div>
+                        <p>AWS (Amazon Web Services) is the biggest cloud provider. They have massive warehouses full of servers. You access them via the internet. Pay only for what you use — like electricity or water.</p>
+                        <div class="quote-banner">"There is no cloud. It's just someone else's computer." — Internet Wisdom</div>
+                        <div class="resource-links">
+                            <a href="https://aws.amazon.com/what-is-aws/" target="_blank" rel="noopener" class="resource-link">☁️ What is AWS</a>
+                            <a href="https://yyducwtv.mychariow.shop/prd_nz1wuy" target="_blank" rel="noopener" class="resource-link">🔓 Full AWS Course</a>
+                        </div>
+                    </div>
+                `
+            },
+            aws2: {
+                title: '🪣 S3 — The Infinite Backpack',
+                content: `
+                    <div class="topic-detail">
+                        <h3>Simple Storage Service</h3>
+                        <div class="analogy-box">
+                            <p><strong>Analogy:</strong> Amazon S3 is like a <em>magical backpack</em> that never gets full. You can throw in anything — photos, videos, backups — and retrieve them from anywhere in the world. It's the most popular cloud storage on Earth. Netflix, Spotify, and Airbnb all use S3!</p>
+                        </div>
+                        <p>S3 stores data as "objects" in "buckets." Each object can be up to 5TB. It's designed for 99.999999999% durability — meaning you'd have to wait millions of years to lose a file.</p>
+                        <div class="quote-banner">"Data is the new oil. S3 is the supertanker." — Cloud Architect Saying</div>
+                        <div class="resource-links">
+                            <a href="https://aws.amazon.com/s3/" target="_blank" rel="noopener" class="resource-link">🪣 AWS S3 Docs</a>
+                            <a href="https://yyducwtv.mychariow.shop/prd_nz1wuy" target="_blank" rel="noopener" class="resource-link">🔓 Full Course</a>
+                        </div>
+                    </div>
+                `
+            },
+            aws3: {
+                title: '⚙️ EC2 — Summon a Computer in 60 Seconds',
+                content: `
+                    <div class="topic-detail">
+                        <h3>Elastic Compute Cloud</h3>
+                        <div class="analogy-box">
+                            <p><strong>Analogy:</strong> EC2 is like having a <em>robot genie</em>. You rub the lamp (click "Launch"), and *poof* — a brand new computer appears, ready to do your bidding. Need a tiny one? Cheap. Need a monster with 96 CPUs? Available. When you're done, you dismiss it and stop paying. Magic!</p>
+                        </div>
+                        <p>EC2 gives you a "virtual machine" — a simulated computer running inside a real one. You choose the OS (Linux, Windows), size, and region. It's the backbone of most cloud applications.</p>
+                        <div class="quote-banner">"With great power comes great responsibility. Also, remember to turn off your EC2 instances!" — Every AWS Bill</div>
+                        <div class="resource-links">
+                            <a href="https://aws.amazon.com/ec2/" target="_blank" rel="noopener" class="resource-link">⚙️ AWS EC2 Docs</a>
+                            <a href="https://yyducwtv.mychariow.shop/prd_nz1wuy" target="_blank" rel="noopener" class="resource-link">🔓 Full Course</a>
+                        </div>
+                    </div>
+                `
+            },
+            ai1: {
+                title: '📊 What is AI Really? Pattern Copying Machine',
+                content: `
+                    <div class="topic-detail">
+                        <h3>Demystifying Artificial Intelligence</h3>
+                        <div class="analogy-box">
+                            <p><strong>Analogy:</strong> AI is like a <em>photocopier for patterns</em>. Show it 10,000 pictures of cats, and it learns what "cat-ness" looks like. Then it can spot cats in new pictures. It doesn't "understand" cats — it just memorized the statistical pattern of cat pixels. That's the big secret!</p>
+                        </div>
+                        <p>AI = pattern recognition at massive scale. Machine Learning = the process of teaching AI by showing examples. Deep Learning = using many layers of "neurons" (math functions) stacked deep. No magic — just math.</p>
+                        <div class="quote-banner">"AI is neither artificial nor intelligent. It's just really good statistics." — Cynical Data Scientist</div>
+                        <div class="resource-links">
+                            <a href="https://course.fast.ai/" target="_blank" rel="noopener" class="resource-link">🎓 Fast.ai Free Course</a>
+                            <a href="https://yyducwtv.mychariow.shop/prd_nz1wuy" target="_blank" rel="noopener" class="resource-link">🔓 Full AI Course</a>
+                        </div>
+                    </div>
+                `
+            },
+            ai2: {
+                title: '🕵️ LLMs — Super Advanced Autocomplete',
+                content: `
+                    <div class="topic-detail">
+                        <h3>Large Language Models Exposed</h3>
+                        <div class="analogy-box">
+                            <p><strong>Analogy:</strong> ChatGPT and similar models are just <em>supercharged autocomplete</em> — like the suggestions on your phone keyboard, but trained on the entire internet. They predict the next most likely word, over and over. When they sound smart, it's because the training data contained smart-sounding patterns. They don't actually "know" anything!</p>
+                        </div>
+                        <p>An LLM is a giant mathematical function with billions of parameters (knobs to tune). During training, it adjusts these knobs to minimize prediction error. The result? A model that can generate human-like text by pure statistical mimicry. No consciousness. No understanding. Just math.</p>
+                        <div class="quote-banner">"An LLM is a mirror reflecting the internet's text patterns back at you." — AI Researcher</div>
+                        <div class="resource-links">
+                            <a href="https://www.youtube.com/watch?v=zjkBMFhNj_g" target="_blank" rel="noopener" class="resource-link">🎥 How LLMs Work</a>
+                            <a href="https://yyducwtv.mychariow.shop/prd_nz1wuy" target="_blank" rel="noopener" class="resource-link">🔓 Full Course</a>
+                        </div>
+                    </div>
+                `
+            },
+            ai3: {
+                title: '🤖 AI Agents — Robot Butlers with a To-Do List',
+                content: `
+                    <div class="topic-detail">
+                        <h3>Autonomous AI Agents</h3>
+                        <div class="analogy-box">
+                            <p><strong>Analogy:</strong> An AI Agent is like a <em>robot butler</em> with a to-do list. You give it a goal ("book me a flight"), and it breaks it down: 1) Check calendar 2) Search flights 3) Compare prices 4) Book best option 5) Confirm with you. It loops: <strong>Perceive → Think → Act → Learn</strong>. That's the entire "secret" formula!</p>
+                        </div>
+                        <p>Agents use an LLM as their "brain" but add tools (web search, code execution, APIs). They can plan multi-step tasks and recover from errors. The "agency" comes from the loop, not from any special intelligence. Build one yourself to truly understand!</p>
+                        <div class="quote-banner">"An agent is just a while-loop with an LLM inside." — Brutally Honest Engineer</div>
+                        <div class="resource-links">
+                            <a href="https://langchain.com/" target="_blank" rel="noopener" class="resource-link">🔗 LangChain Agents</a>
+                            <a href="https://yyducwtv.mychariow.shop/prd_nz1wuy" target="_blank" rel="noopener" class="resource-link">🔓 Full Agent Course</a>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        function openModal(key) {
+            const data = modalData[key];
+            if (!data) return;
+            document.getElementById('modalBody').innerHTML = `
+                <h2 style="font-size:1.6rem; font-weight:700; margin-bottom:4px;">${data.title}</h2>
+                ${data.content}
+            `;
+            document.getElementById('modalOverlay').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(event) {
+            if (event.target === document.getElementById('modalOverlay')) {
+                document.getElementById('modalOverlay').style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        }
+
+        function closeModalDirect() {
+            document.getElementById('modalOverlay').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        // ESC key to close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.getElementById('modalOverlay').style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Smooth scroll for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        console.log('🚀 LessGooo Kids is ready!');
+        console.log('💡 Remember: "Hard work beats talent when talent doesn\'t work hard."');
+        console.log('🍴 Fork this, commit daily, and build something awesome!');
+        console.log('💳 Unlock full courses at: https://yyducwtv.mychariow.shop/prd_nz1wuy');
+        console.log('📜 All docs and resources linked throughout the site.');
+        console.log('🌟 Now go LessGooo!');
+    </script>
+</body>
+</html>
